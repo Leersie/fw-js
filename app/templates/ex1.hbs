@@ -1,2 +1,35 @@
 {{page-title "Ex1"}}
+<style>
+  button{
+    color:white;
+    background-color:blue;
+  }
+  textarea{
+    width:100%;
+  }
+  body{
+    width:30%;
+    margin: 4px;
+  }
+  .info{
+    background-color: #9f9fff;
+    color:blue;
+  }
+  .warning{
+    background-color:orange;
+  }
+
+  .danger{
+    background-color:red;
+  }
+</style>
+<b>Note :</b><br/>
+<Textarea @value={{this.content}} maxlength={{this.MAX}} {{on "keypress" this.update}} />
+<br/>
+<br/>
+<button type="button" {{on "click" this.save}}> Enregistrer </button>
+<button type="button" {{on "click" this.clear}}> Effacer </button>
+<div class="info">Nombre de caractères restant : {{this.size}}</div>
+<br/>
+<div class={{this.style}}>{{this.info}}</div>
 {{outlet}}
