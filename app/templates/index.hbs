@@ -3,8 +3,12 @@
 <form {{action "login" @model on="submit"}}>
   <Input required type="email" @value={{@model.email}} placeholder="Votre email" />
   <Input required type="password" @value={{@model.password}} placeholder="Votre mot de passe" />
+{{#if (eq @model.email '') }}
+  <button type="submit" disabled>Se connecter</button>
+{{else}}
+  <button type="submit" >Se connecter</button>
+{{/if}}
 
-  <button type="submit" disabled={{this.formValid}}>Se connecter</button>
 
 </form>
 {{outlet}}
