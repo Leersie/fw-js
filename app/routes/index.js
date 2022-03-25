@@ -11,6 +11,8 @@ export default class IndexRoute extends Route {
   }
 
   @action login(user) {
+
+
     this.store
       .query('employee', {
         filter: {

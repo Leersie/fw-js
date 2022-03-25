@@ -13,4 +13,14 @@ export default class OrderModel extends Model {
   get count() {
     return this.orderdetails.length;
   }
+
+  get status() {
+    return this.status;
+  }
+
+  get price() {
+    return this.amount;
+  }
+
+
 }

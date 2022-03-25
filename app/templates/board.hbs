@@ -6,11 +6,56 @@
 </div>
 <h2>Orders</h2>
 <ul>
+  <h2>Préparées</h2>
   {{#each @model.orders as |order|}}
-    <li>
+
+
+
+
+
+
+
       <LinkTo @route="order" @model={{order.id}}>
-        {{order.dateCreation}} <span class="ui circular label">{{order.count}}</span>
+
+         {{#if (eq order.status 'prepared')}}
+           <li>
+           <i class="orange hourglass outline icon"></i>
+           {{order.dateCreation}} <span class="ui circular label">{{order.count}}</span>
+         </li>
+           {{/if}}
+
+
+
+
+
       </LinkTo>
-    </li>
+
+
+
+   {{/each}}
+<h2>Créées</h2>
+  {{#each @model.orders as |order|}}
+
+
+
+
+
+      <LinkTo @route="order" @model={{order.id}}>
+
+        {{#if (eq order.status 'created')}}
+          <li>
+          <i class="green check icon"></i>
+          {{order.dateCreation}} <span class="ui circular label">{{order.count}}</span>
+          <a class="green ui button small">{{order.price}}</a>
+        </li>
+
+        {{/if}}
+
+
+
+      </LinkTo>
+
+
+
   {{/each}}
 </ul>

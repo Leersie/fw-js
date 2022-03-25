@@ -1,2 +1,60 @@
 {{page-title "Order"}}
-{{outlet}}
+<a href="/board"><button class="ui orange button">Retour aux commandes à préparer</button></a>
+<h2>Orders</h2>
+
+Nom : {{ @model.user.name }}  ({{ @model.user.email }}) <br>
+
+{{ @model.dateCreation }}
+
+
+
+    <table>
+      <thead>
+      <tr>
+        <th>Produit</th>
+        <th>Quantité</th>
+        <th>Prix</th>
+        <th>Montant</th>
+        <th>Preparation</th>
+
+      </tr>
+      </thead>
+
+      <tbody>
+      {{#each @model.orderdetails as |orderdetails|}}
+     <tr>
+          <td>{{ orderdetails.product.name }}</td>
+          <td>{{ orderdetails.quantity }}</td>
+          <td>{{ orderdetails.product.price }}</td>
+          <td>{{ orderdetails.amount }} </td>
+          <td><Input @type="checkbox" @checked={{orderdetails.prepared}}/></td>
+
+        </tr>
+      {{/each}}
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{@model.price}}</td>
+        <td>{{@model.toPay}} €</td>
+      </tr>
+
+      <h1>Produits Préparés </h1>
+      {{#each @model.orderdetails as |orderdetails|}}
+{{#if orderdetails.prepared}}
+            {{ orderdetails.product.name }}
+            <br/>
+           {{ orderdetails.product.price }} X {{ orderdetails.quantity }}
+            <br/>
+            <br/>
+
+            {{/if}}
+
+      {{/each}}
+      </tbody>
+
+    </table>
+
+<button class=""> Valider pour {{@model.price}} €</button>
+
+

@@ -9,4 +9,6 @@ export default class OrderdetailModel extends Model {
   get amount() {
     return this.product.get('price') * this.quantity;
   }
+
+
 }
